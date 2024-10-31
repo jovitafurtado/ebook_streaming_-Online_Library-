@@ -1,0 +1,170 @@
+body {
+    font-family: times new roman;
+    background-image:url(ebook1.jpg);
+    height: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:relative;
+}
+
+header {
+ background-color: #6f4f31;  /* Coffee Brown (represents vintage/old books) */
+    color: #fff;                /* White text for contrast */
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: absolute;
+    display: block;
+    top:0;
+    left:0;
+        }
+nav {
+    background-color: #3e2723;  /* Dark Brown */
+    color: white;
+    font-weight:bolder;
+    font-size:20px;
+    width: 100%;
+    padding: 10px 0;
+    text-align:left;
+}
+
+
+nav a {
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.container {
+    width: 30%;
+    margin: 400px auto;
+    background: #ffe5b4;
+    padding: 20px;
+    height:70%;
+    position:relative;
+    align:center;
+}
+.container h2
+{
+    font-size:xx-large;
+}
+header h1 {
+    font-size: 4rem;
+    font-weight: bolder;
+    margin: 0;
+}
+
+header p {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+ 
+h1, h2 {
+    font-weight:bold;
+    color: black;
+}
+footer {
+    background-color: #3e2723;  /* Dark Brown (represents aged books) */
+    color: white;                /* White text for contrast */
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    position: absolute;
+    display: inline-block;
+    left:0;
+    margin-bottom:0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 35%;
+    padding: 10px;
+    background: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+margin:5px;
+}
+   /*.search-box {
+            margin: 20px 0;
+        }*/
+        .search-box input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .search-box input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+       
+        .results {
+            margin: 20px 0;
+        }
+        .book {
+            padding: 10px;
+            background-color: white;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        .book h2 {
+            margin: 0;
+        }
+        .book p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .featured-ebook {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 100%; /* Occupy full width of the container */
+            text-align: left;
+        }
+
+        .featured-ebook h2 {
+            margin-bottom: 15px;
+        }
+
+.suggestions {
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: #fff;
+    width: 90%;
+    z-index: 1000;
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .suggestions div:hover {
+        background-color: #f0f0f0;
+    }

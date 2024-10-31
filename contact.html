@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <style type="text/css">
+       
+        .container {
+            padding: 10px auto;
+            width: 50%;
+            height: 100%;
+            border-radius: 10px;
+            margin: 270px auto;
+        }
+   
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+     
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to eBook Stream</h1>
+        <p>Stream and read your favorite eBooks online anytime, anywhere</p>
+        <nav>
+            <a href="home.php">Home</a>
+            <a href="search.html">Search</a>
+            <a href="adminlog.html">Admin</a>
+            <a href="contact.html">About us</a>
+             <a href="logout.php" style="text-align=right; color:white; border: 2px solid transparent;border-radius: 5px;transition: all 0.3s ease;">Logout</a>
+        </nav>
+</header>
+
+    <div class="container">
+        <h1>About Us</h1>
+
+        <section id="about">
+            <h2>Our Story</h2>
+            <p>Welcome to the Ebook Streaming Platform! Our platform is designed to bring the best and latest ebooks directly to your screen. Whether you are a fan of fiction, non-fiction, or academic texts, we have it all. We provide seamless access to a vast library of ebooks that are available to stream anytime, anywhere, making reading more accessible and enjoyable.</p>
+        </section>
+        
+        <h2 >Contact Us</h2>
+                <p>Phone Number: +91 2341556424</p>
+           
+            <p>
+                <a href="https://www.facebook.com/yourFacebookID" id="facebook-link" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com/yourInstagramID" id="Instagram-link" target="_blank">Instagram</a> |
+                <a href="https://www.youtube.com/c/yourYouTubeChannel" id="YouTube-link" target="_blank">YouTube</a>
+            </p>
+
+        </div>
+        <script>
+            document.getElementById('facebook-link').addEventListener('click', function (event) {
+                if (!confirm('Going to Facebook! Are you sure to proceed?')) {
+                    event.preventDefault();
+                }
+            });
+
+            document.getElementById('Instagram-link').addEventListener('click', function (event) {
+                if (!confirm('Going to Instagram! Are you sure to proceed?')) {
+                    event.preventDefault();
+                }
+            });
+
+            document.getElementById('YouTube-link').addEventListener('click', function (event) {
+                if (!confirm('Going to YouTube! Are you sure to proceed?')) {
+                    event.preventDefault();
+                }
+            });
+
+        </script>
+
+        <footer>
+            <p>2024 eBook Stream | All Rights Reserved</p>
+        </footer>
+
+</body>
+</html>
+

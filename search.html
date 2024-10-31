@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Basic styling for the suggestion box and featured books */
+        #livesearch {
+            border: 1px solid #A5ACB2;
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+            background: white;
+            position: absolute;
+            z-index: 1000;
+        }
+
+            #livesearch div {
+                padding: 8px;
+                cursor: pointer;
+            }
+
+                #livesearch div:hover {
+                    background-color: #e8e8e8;
+                }
+
+        .featured-ebook .book {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+            .button:hover {
+                background-color: #45a049;
+            }
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to eBook Stream</h1>
+        <p>Stream and read your favorite eBooks online anytime, anywhere</p>
+        <nav>
+            <a href="home.php">Home</a>
+            <a href="search.html">Search</a>
+            <a href="adminlog.html">Admin</a>
+            <a href="contact.html">About us</a>
+            <a href="logout.php" style="text-align=right; color:white; border: 2px solid transparent;border-radius: 5px;transition: all 0.3s ease;">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Search for Books</h2>
+        <form id="searchForm">
+            <input type="text" id="search" placeholder="Enter book title, author, or category" oninput="showSuggestions(this.value)">
+            <button type="reset" value="Cancel" formaction="clearResults()">Cancel</button>
+        </form>
+        <div id="livesearch"></div>
+
+        <!-- Search results will appear inside this div -->
+        <div class="featured-ebook">
+            <p>Found Results will be presented here</p>
+            <!-- Results from search will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        
+        function showSuggestions(query) {
+            if (query.length === 0) {
+                document.getElementById("livesearch").innerHTML = "";
+                return;
+            }
+
+            // Fetch suggestions from PHP
+            fetch(`search2.php?type=suggestion&q=${encodeURIComponent(query)}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("livesearch").innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching suggestions:', error));
+        }
+
+        // Handle suggestion selection
+        function selectSuggestion(text) {
+            document.getElementById("search").value = text;
+            document.getElementById("livesearch").innerHTML = ""; // Clear suggestions
+            performSearch(); // Perform search based on selected suggestion
+        }
+
+    
+        function performSearch() {
+            let query = document.getElementById("search").value;
+            fetch(`search2.php?type=search&q=${encodeURIComponent(query)}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector(".featured-ebook").innerHTML = data;
+
+                })
+                .catch(error => console.error('Error fetching search results:', error));
+        }
+      
+
+        function readEbook(bookId) {
+            $.ajax({
+                type: 'POST',
+                url: 'viewebook.php',
+                data: { bookId: bookId },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status === 'success') {
+                        window.open(data.ebookLink, '_blank');
+                    } else {
+                        alert(data.message || "An error occurred while opening the eBook.");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                    alert("An unexpected error occurred.");
+                }
+            });
+        }
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const regex = /([^&=]+)=([^&]*)/g;
+            let match;
+
+            while (match = regex.exec(queryString)) {
+                params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+            }
+
+            return params;
+        }
+
+        // Populate the search input box with the category from the URL
+        const params = getQueryParams();
+        if (params.category) {
+            document.getElementById("search").value = params.category;
+            showSuggestions(params.category); 
+        }
+        function clearResults() {
+            document.getElementById("search").value = ''; // Clear the search input
+            document.getElementById("featured-ebook").innerHTML = ''; // Clear the results
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2024 eBook Stream | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
+
+
+

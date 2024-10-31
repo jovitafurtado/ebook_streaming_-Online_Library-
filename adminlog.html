@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>Admin Login</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Welcome to eBook Stream</h1>
+        <p>Stream and read your favorite eBooks online anytime, anywhere</p>
+
+    </header>
+   
+
+    
+<div class="container">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button value="submit" onclick="login()">Login</button>
+    <button value="reset">Cancel</button>
+   <br/><br/> <a href="index.php">Return to Login Page</a>
+    <div id="error-message" class="error"></div>
+</div>
+    <!-- Footer Section -->
+    <footer>
+        <p>2024 eBook Stream | All Rights Reserved</p>
+    </footer>
+<script>
+    const staticUsername = "admin";
+    const staticPassword = "password123";
+
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+
+        if (username === staticUsername && password === staticPassword) {
+            window.location.href = "admin.php"; // Redirect to your dashboard page
+        } else {
+            errorMessage.textContent = "Invalid username or password.";
+        }
+    }
+</script>
+
+</body>
+</html>
